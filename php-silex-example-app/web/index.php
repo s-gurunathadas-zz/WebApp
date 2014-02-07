@@ -27,6 +27,7 @@ $app['assetic.filter_manager'] = $app->share(
 
 $app->get('/', function() use ($app) {
     return $app['twig']->render('hello.twig');
+    //Need to change
 });
 
 $app->run();
