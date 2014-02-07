@@ -63,7 +63,7 @@
         var bodycheck;
 
         // If there's a hash, or addEventListener is undefined, stop here
-        if ( !win.navigator.standalone && !location.hash && win.addEventListener ) {
+        if ( !location.hash && win.addEventListener ) {
 
             // scroll to 1
             window.scrollTo( 0, 1 );
@@ -86,7 +86,7 @@
                         MBP.hideUrlBar();
                     }
                 }, 0);
-            }, false);
+            });
         }
     };
 
@@ -99,8 +99,6 @@
         this.handler = handler;
         // styling of .pressed is defined in the project's CSS files
         this.pressedClass = typeof pressedClass === 'undefined' ? 'pressed' : pressedClass;
-
-        MBP.listenForGhostClicks();
 
         if (element.length && element.length > 1) {
             for (var singleElIdx in element) {
@@ -203,24 +201,13 @@
     // The browser sniffing is to avoid the Blackberry case. Bah
     MBP.dodgyAndroid = ('ontouchstart' in window) && (navigator.userAgent.indexOf('Android 2.3') != -1);
 
-    MBP.listenForGhostClicks = (function() {
-        var alreadyRan = false;
+    if (document.addEventListener) {
+        document.addEventListener('click', MBP.ghostClickHandler, true);
+    }
 
-        return function() {
-            if(alreadyRan) {
-                return;
-            }
-
-            if (document.addEventListener) {
-                document.addEventListener('click', MBP.ghostClickHandler, true);
-            }
-            addEvt(document.documentElement, 'touchstart', function() {
-                MBP.hadTouchEvent = true;
-            }, false);
-
-            alreadyRan = true;
-        };
-    })();
+    addEvt(document.documentElement, 'touchstart', function() {
+        MBP.hadTouchEvent = true;
+    }, false);
 
     MBP.coords = [];
 
@@ -317,7 +304,7 @@
     /**
      * Prevent default scrolling on document window
      */
-
+     
     MBP.preventScrolling = function() {
         document.addEventListener('touchmove', function(e) {
             if (e.target.type === 'range') { return; }
@@ -332,24 +319,17 @@
      */
 
     MBP.preventZoom = function() {
-        if (MBP.viewportmeta && navigator.platform.match(/iPad|iPhone|iPod/i)) {
-            var formFields = document.querySelectorAll('input, select, textarea');
-            var contentString = 'width=device-width,initial-scale=1,maximum-scale=';
-            var i = 0;
-            var fieldLength = formFields.length;
+        var formFields = document.querySelectorAll('input, select, textarea');
+        var contentString = 'width=device-width,initial-scale=1,maximum-scale=';
+        var i = 0;
 
-            var setViewportOnFocus = function() {
+        for (i = 0; i < formFields.length; i++) {
+            formFields[i].onfocus = function() {
                 MBP.viewportmeta.content = contentString + '1';
             };
-
-            var setViewportOnBlur = function() {
+            formFields[i].onblur = function() {
                 MBP.viewportmeta.content = contentString + '10';
             };
-
-            for (; i < fieldLength; i++) {
-                formFields[i].onfocus = setViewportOnFocus;
-                formFields[i].onblur = setViewportOnBlur;
-            }
         }
     };
 
@@ -392,8 +372,8 @@
             head.appendChild(link1);
         }
 
-        //hack to fix letterboxed full screen web apps on 4" iPhone / iPod with iOS 6
-        if (navigator.platform.match(/iPhone|iPod/i) && (screen.height === 568) && navigator.userAgent.match(/\bOS 6_/)) {
+        //hack to fix letterboxed full screen web apps on 4" iPhone / iPod
+        if ((navigator.platform === 'iPhone' || 'iPod') && (screen.height === 568)) {
             if (MBP.viewportmeta) {
                 MBP.viewportmeta.content = MBP.viewportmeta.content
                     .replace(/\bwidth\s*=\s*320\b/, 'width=320.1')

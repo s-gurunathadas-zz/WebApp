@@ -1,7 +1,10 @@
+[Mobile Boilerplate homepage](http://mobileboilerplate.com/) | [Documentation
+table of contents](README.md)
+
 # Contributing to Mobile Boilerplate
 
-♥ [Mobile Boilerplate](http://mobileboilerplate.com) and want to get involved?
-Thanks! There are plenty of ways you can help!
+♥ Mobile Boilerplate and want to get involved? Thanks! There are plenty of ways
+you can help!
 
 
 ## Reporting issues
@@ -9,7 +12,7 @@ Thanks! There are plenty of ways you can help!
 A bug is a _demonstrable problem_ that is caused by the code in the
 repository.
 
-Please read the following guidelines before you [report an issue](https://github.com/h5bp/mobile-boilerplate/issues):
+Please read the following guidelines for reporting bugs:
 
 1. **Use the GitHub issue search** &mdash; check if the issue has already been
    reported. If it has been, please comment on the existing issue.
@@ -51,8 +54,6 @@ details will help people to assess and fix any potential bugs.
 
 A good bug report shouldn't leave people needing to chase you up to get further
 information that is required to assess or fix the bug.
-
-**[File a bug report](https://github.com/h5bp/mobile-boilerplate/issues)**
 
 
 ## Pull requests

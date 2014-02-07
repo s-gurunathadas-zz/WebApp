@@ -27,8 +27,8 @@ spec](http://www.whatwg.org/specs/web-apps/current-work/complete/semantics.html#
 (4.2.5.5 Specifying the document's character encoding), add your charset
 declaration early (before any ASCII art ;) to avoid a potential
 [encoding-related security
-issue](http://code.google.com/p/doctype-mirror/wiki/ArticleUtf7) in IE. It
-should come in the first [1024
+issue](http://code.google.com/p/doctype/wiki/ArticleUtf7) in IE. It should come
+in the first [1024
 bytes](http://www.whatwg.org/specs/web-apps/current-work/multipage/semantics.html#charset).
 
 The charset should also come before the `<title>` tag, due to [potential XSS
@@ -122,14 +122,6 @@ Makes the web page run in full screen mode when launched from the home screen ic
 
 Styles the bar at the top of the browser
 
-## Canonical link to the desktop version for SEO
-
-```html
-<link rel="canonical" href="http://www.example.com/" >
-```
-
-Websites with separate URLs for desktop and mobile websites need to have a canonical link on mobile site pointing back to the desktop version for SEO. More information on [Google Webmaster Docs](https://developers.google.com/webmasters/smartphone-sites/details#separateurls).
-
 ## More tags for your 'head'
 
 ```html
@@ -163,9 +155,11 @@ The central part of the boilerplate template is pretty much empty. This is
 intentional, in order to make the boilerplate suitable for both web page and
 web app development.
 
-## jQuery
+## Zepto
 
-HTML5 Mobile Boilerplate comes with the latest version of [jQuery](http://jquery.com).
+HTML5 Mobile Boilerplate comes with the latest version of [Zepto.js](http://zeptojs.com). This is currently version 1.0rc1.
+
+Zepto is a minimalist JavaScript library for modern browsers with a largely jQuery-compatible API. It is a good choice when targeting mobile browsers given that it's lightweight, fast and has some great features for building mobile web apps.
 
 ## Google Analytics Tracking Code
 
