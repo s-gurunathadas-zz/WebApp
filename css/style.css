@@ -19,24 +19,13 @@ main {
 	width: 1000px;
 }
 .abox {
-	float: left;
-	width: 300px;
 	text-align: center;
 	margin-right: 5px;
 	padding: 5px;
 
 
 }
-.abox img {
-	border: medium solid #FFFBF0;
-	-moz-border-radius:19px;
-	-webkit-border-radius:19px;
-	border-radius:19px;
-	-moz-box-shadow:0px 0px 11px #000000;
-	-webkit-box-shadow:0px 0px 11px #000000;
-	box-shadow:0px 0px 11px #000000;
 
-}
 .content .abox figure a:hover {
 	-moz-border-radius:19px;
 -webkit-border-radius:19px;
@@ -158,9 +147,8 @@ input#search-btn{
 	background:url(../images/search-btn.png) no-repeat center;
 }
 footer {
-	background-image: url(../images/footer_bg.png);
 	background-repeat: repeat-x;
-	height: 400px;
+	height: 10px;
 	width: 100%;
 	margin: auto;
 	clear: both;
@@ -295,9 +283,9 @@ details {
 	font-weight: bold;
 }
 .enter {
-	width: 960px;
+	width: 310px;
 	position: relative;
-	margin-top: 10px;
+	margin-top: 30px;
 	margin-right: auto;
 	margin-bottom: auto;
 	margin-left: auto;
@@ -309,7 +297,7 @@ details {
 	-webkit-box-shadow:0px 0px 2px #000000;
 	box-shadow:0px 0px 2px #000000;
 	padding-right: 10px;
-	height: 242px;
+	height: 442px;
 
 
 }
